@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Tea{% endblock %}
+
+{% block body %}
+    <h1>Create new Tea</h1>
+
+    {{ include('tea/_form.html.twig') }}
+
+    <a href="{{ path('tea_index') }}">back to list</a>
+{% endblock %}

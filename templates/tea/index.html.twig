@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tea index{% endblock %}
+
+{% block body %}
+    <h1>Tea index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Origin</th>
+                <th>Color</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tea in teas %}
+            <tr>
+                <td>{{ tea.id }}</td>
+                <td>{{ tea.name }}</td>
+                <td>{{ tea.origin }}</td>
+                <td>{{ tea.color }}</td>
+                <td>
+                    <a href="{{ path('tea_show', {'id': tea.id}) }}">show</a>
+                    <a href="{{ path('tea_edit', {'id': tea.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('tea_new') }}">Create new</a>
+{% endblock %}
