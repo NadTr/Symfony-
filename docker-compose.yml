@@ -1,0 +1,43 @@
+version: '3.1'
+
+services:
+
+  # La base de données MySQL. Elle est configurée de façon à être joignable sur
+  # localhost:3306 .
+  #
+  # Utilisateur: user
+  # Mot de passe: password
+  # Base de données par défault: testSymfony
+
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbvolume:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: testsymfony
+
+  # Un serveur Adminer pour pouvoir tester les fonctionnalités de la base de données et
+  # faire du debugging. Il est joignable avec un simple browser en utilisant http://localhost:9000 .
+  #
+  # Voir la configuration de PostgreSQL pour les accès.
+
+  adminer:
+    image: adminer:4.7
+    depends_on:
+      - db
+    ports:
+      - "9000:8080"
+
+# Un volume nommé pour stocker le contenu de la base de données PostgreSQL. De cette façon
+# le contenu de la base de données ne sera pas effacé à chaque lancement des services.
+#
+# Pour le cleaner il suffit de faire un `docker-compose down -v` suivi d'un
+# `docker-compose up`.
+
+volumes:
+   dbvolume:
