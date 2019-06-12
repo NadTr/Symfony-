@@ -19,8 +19,8 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_USER: user
       MYSQL_PASSWORD: password
-      MYSQL_DATABASE: testsymfony
-
+      MYSQL_DATABASE: symfonyproject
+      
   # Un serveur Adminer pour pouvoir tester les fonctionnalités de la base de données et
   # faire du debugging. Il est joignable avec un simple browser en utilisant http://localhost:9000 .
   #
