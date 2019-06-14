@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Tea;
+use App\Entity\Book;
 use App\Entity\Reader;
 use App\Form\ReaderType;
 use App\Repository\ReaderRepository;

@@ -20,8 +20,8 @@ class TeaType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults(array(
             'data_class' => Tea::class,
-        ]);
+        ));
     }
 }

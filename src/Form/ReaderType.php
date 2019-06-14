@@ -3,6 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Reader;
+use App\Entity\Book;
+use App\Entity\Tea;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,15 +17,35 @@ class ReaderType extends AbstractType
         $builder
             ->add('name')
             ->add('age')
-            ->add('tea')
-            ->add('books')
+          //  ->add('tea')
+          // ->add('books')
+          ->add('tea', EntityType::class, [
+                'required' => false,
+                'label' => false,
+                'class' => Tea::class,
+                'choice_label' => 'tea',
+                'multiple' => false
+            ])
+            ->add('books', EntityType::class, [
+                'required' => false,
+                'label' => false,
+                'class' => Book::class,
+                'choice_label' => 'name',
+                'multiple' => true
+            ])
+          // ->add('books', EntityType::class, array(
+          //      'class' => Book::class,
+          //     'label' => 'reader.label.books',
+          //     'mapped' => false,
+          //     'required'=> true
+          //     ))
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults(array(
             'data_class' => Reader::class,
-        ]);
+        ));
     }
 }
