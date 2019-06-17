@@ -23,8 +23,8 @@
                 <td>{{ tea.origin }}</td>
                 <td>{{ tea.color }}</td>
                 <td>
-                    <a href="{{ path('tea_show', {'id': tea.id}) }}">show</a>
-                    <a href="{{ path('tea_edit', {'id': tea.id}) }}">edit</a>
+                    <a href="{{ path('tea.show', {'id': tea.id}) }}">show</a>
+                    <a href="{{ path('tea.edit', {'id': tea.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +35,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('tea_new') }}">Create new</a>
+    <a href="{{ path('tea.new') }}">Create new</a>
 {% endblock %}

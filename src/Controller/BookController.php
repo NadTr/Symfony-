@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class BookController extends AbstractController
 {
     /**
-     * @Route("/", name="book_index", methods={"GET"})
+     * @Route("/", name="book.index", methods={"GET"})
      */
     public function index(BookRepository $bookRepository): Response
     {
@@ -26,7 +26,7 @@ class BookController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="book_new", methods={"GET","POST"})
+     * @Route("/new", name="book.new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -39,7 +39,7 @@ class BookController extends AbstractController
             $entityManager->persist($book);
             $entityManager->flush();
 
-            return $this->redirectToRoute('book_index');
+            return $this->redirectToRoute('book.index');
         }
 
         return $this->render('book/new.html.twig', [
@@ -49,7 +49,7 @@ class BookController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="book_show", methods={"GET"})
+     * @Route("/{id}", name="book.show", methods={"GET"})
      */
     public function show(Book $book): Response
     {
@@ -59,7 +59,7 @@ class BookController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="book_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="book.edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Book $book): Response
     {
@@ -69,7 +69,7 @@ class BookController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('book_index', [
+            return $this->redirectToRoute('book.index', [
                 'id' => $book->getId(),
             ]);
         }
@@ -81,7 +81,7 @@ class BookController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="book_delete", methods={"DELETE"})
+     * @Route("/{id}", name="book.delete", methods={"DELETE"})
      */
     public function delete(Request $request, Book $book): Response
     {
@@ -91,6 +91,6 @@ class BookController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('book_index');
+        return $this->redirectToRoute('book.index');
     }
 }

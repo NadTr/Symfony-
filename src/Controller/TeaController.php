@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TeaController extends AbstractController
 {
     /**
-     * @Route("/", name="tea_index", methods={"GET"})
+     * @Route("/", name="tea.index", methods={"GET"})
      */
     public function index(TeaRepository $teaRepository): Response
     {
@@ -26,7 +26,7 @@ class TeaController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="tea_new", methods={"GET","POST"})
+     * @Route("/new", name="tea.new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -39,7 +39,7 @@ class TeaController extends AbstractController
             $entityManager->persist($tea);
             $entityManager->flush();
 
-            return $this->redirectToRoute('tea_index');
+            return $this->redirectToRoute('tea.index');
         }
 
         return $this->render('tea/new.html.twig', [
@@ -49,7 +49,7 @@ class TeaController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="tea_show", methods={"GET"})
+     * @Route("/{id}", name="tea.show", methods={"GET"})
      */
     public function show(Tea $tea): Response
     {
@@ -59,7 +59,7 @@ class TeaController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="tea_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="tea.edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Tea $tea): Response
     {
@@ -69,7 +69,7 @@ class TeaController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('tea_index', [
+            return $this->redirectToRoute('tea.index', [
                 'id' => $tea->getId(),
             ]);
         }
@@ -81,7 +81,7 @@ class TeaController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="tea_delete", methods={"DELETE"})
+     * @Route("/{id}", name="tea.delete", methods={"DELETE"})
      */
     public function delete(Request $request, Tea $tea): Response
     {
@@ -91,6 +91,6 @@ class TeaController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('tea_index');
+        return $this->redirectToRoute('tea.index');
     }
 }

@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ReaderController extends AbstractController
 {
     /**
-     * @Route("/", name="reader_index", methods={"GET"})
+     * @Route("/", name="reader.index", methods={"GET"})
      */
     public function index(ReaderRepository $readerRepository): Response
     {
@@ -28,7 +28,7 @@ class ReaderController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="reader_new", methods={"GET","POST"})
+     * @Route("/new", name="reader.new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -41,7 +41,7 @@ class ReaderController extends AbstractController
             $entityManager->persist($reader);
             $entityManager->flush();
 
-            return $this->redirectToRoute('reader_index');
+            return $this->redirectToRoute('reader.index');
         }
 
         return $this->render('reader/new.html.twig', [
@@ -51,7 +51,7 @@ class ReaderController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="reader_show", methods={"GET"})
+     * @Route("/{id}", name="reader.show", methods={"GET"})
      */
     public function show(Reader $reader): Response
     {
@@ -61,7 +61,7 @@ class ReaderController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="reader_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="reader.edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Reader $reader): Response
     {
@@ -71,7 +71,7 @@ class ReaderController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('reader_index', [
+            return $this->redirectToRoute('reader.index', [
                 'id' => $reader->getId(),
             ]);
         }
@@ -83,7 +83,7 @@ class ReaderController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="reader_delete", methods={"DELETE"})
+     * @Route("/{id}", name="reader.delete", methods={"DELETE"})
      */
     public function delete(Request $request, Reader $reader): Response
     {
@@ -93,6 +93,6 @@ class ReaderController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('reader_index');
+        return $this->redirectToRoute('reader.index');
     }
 }
