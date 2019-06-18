@@ -7,6 +7,7 @@ use App\Entity\Book;
 use App\Entity\Tea;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,14 +16,25 @@ class ReaderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('age')
-            ->add('tea')
+            ->add('name', null,  [
+              'label' => 'Nom',
+              'attr' => array('class'=>'input'),
+            ])
+            ->add('age', IntegerType::class,  [
+              'label' => 'Age',
+              'attr' => array('class'=>'input'),
+            ])
+            ->add('tea', null,  [
+              'label' => 'Thé préféré',
+              'attr' => array('class'=>'input'),
+            ])
             ->add('books', EntityType::class, [
-              'label' => 'Books',
+              'label' => 'Livres lus',
               'class' => Book::class,
               'expanded' => true,
-              'multiple' => true
+              'multiple' => true,
+              'attr' => array('class'=>'checkbox'),
+
             ])
           // ->add('tea', EntityType::class, [
           //       'required' => false,

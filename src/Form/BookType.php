@@ -15,15 +15,15 @@ class BookType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('author')
-            // ->add('author', EntityType::class, array(
-            //      'class' => Author::class,
-            //     'label' => 'book.label.author',
-            //     'mapped' => false,
-            //      'required'=> true
-            //     ))
-            // ->add('readers')
+            ->add('title', null,  [
+              'label' => 'Title',
+              'attr' => array('class'=>'input'),
+            ])
+            ->add('author', EntityType::class,  [
+              'label' => 'Author',
+              'class' => Author::class,
+              'attr' => array('class'=>'input'),
+            ])
         ;
     }
 

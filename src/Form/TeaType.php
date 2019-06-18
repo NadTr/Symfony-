@@ -12,9 +12,18 @@ class TeaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('origin')
-            ->add('color')
+            ->add('name', null,  [
+              'label' => 'Nom',
+              'attr' => array('class'=>'input'),
+            ])
+            ->add('origin', null,  [
+              'label' => 'Origine',
+              'attr' => array('class'=>'input'),
+            ])
+            ->add('color', null,  [
+              'label' => 'Couleur',
+              'attr' => array('class'=>'input'),
+            ])
         ;
     }
 
