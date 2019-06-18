@@ -19,6 +19,16 @@
                 <th>Age</th>
                 <td>{{ reader.age }}</td>
             </tr>
+            <tr>
+                <th>Favourite tea</th>
+                <td>{{ reader.tea.name }}</td>
+            </tr>
+            <tr>
+              <th>Age</th>
+              {% for book in reader.books %}
+                <td>{{ book.title }}</td>
+              {% endfor %}
+            </tr>
         </tbody>
     </table>
 

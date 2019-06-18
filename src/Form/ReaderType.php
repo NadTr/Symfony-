@@ -18,7 +18,12 @@ class ReaderType extends AbstractType
             ->add('name')
             ->add('age')
             ->add('tea')
-            ->add('books')
+            ->add('books', EntityType::class, [
+              'label' => 'Books',
+              'class' => Book::class,
+              'expanded' => true,
+              'multiple' => true
+            ])
           // ->add('tea', EntityType::class, [
           //       'required' => false,
           //       'label' => false,
