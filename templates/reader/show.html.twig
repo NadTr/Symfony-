@@ -32,9 +32,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('reader.index') }}">back to list</a>
+    <a class="btn button is-link" href="{{ path('reader.index') }}">back to list</a>
 
-    <a href="{{ path('reader.edit', {'id': reader.id}) }}">edit</a>
+    <a class="btn button is-dark" href="{{ path('reader.edit', {'id': reader.id}) }}">edit</a>
 
     {{ include('reader/_delete_form.html.twig') }}
 {% endblock %}

@@ -18,9 +18,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('author.index') }}">back to list</a>
+    <a class="btn button is-info" href="{{ path('author.index') }}">back to list</a>
 
-    <a href="{{ path('author.edit', {'id': author.id}) }}">edit</a>
+    <a class="btn button is-dark" href="{{ path('author.edit', {'id': author.id}) }}">edit</a>
 
     {{ include('author/_delete_form.html.twig') }}
 {% endblock %}
