@@ -17,29 +17,23 @@ class ReaderType extends AbstractType
         $builder
             ->add('name')
             ->add('age')
-          //  ->add('tea')
-          // ->add('books')
-          ->add('tea', EntityType::class, [
-                'required' => false,
-                'label' => false,
-                'class' => Tea::class,
-                'choice_label' => 'tea',
-                'multiple' => false
-            ])
-            ->add('books', EntityType::class, [
-                'required' => false,
-                'label' => false,
-                'class' => Book::class,
-                'choice_label' => 'name',
-                'multiple' => true
-            ])
-          // ->add('books', EntityType::class, array(
-          //      'class' => Book::class,
-          //     'label' => 'reader.label.books',
-          //     'mapped' => false,
-          //     'required'=> true
-          //     ))
-        ;
+            ->add('tea')
+            ->add('books')
+          // ->add('tea', EntityType::class, [
+          //       'required' => false,
+          //       'label' => false,
+          //       'class' => Tea::class,
+          //       'choice_label' => 'tea',
+          //       'multiple' => false
+          //   ])
+          //   ->add('books', EntityType::class, [
+          //       'required' => false,
+          //       'label' => false,
+          //       'class' => Book::class,
+          //       'choice_label' => 'name',
+          //       'multiple' => true
+          //   ])
+          ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

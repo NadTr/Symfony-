@@ -16,14 +16,14 @@ class BookType extends AbstractType
     {
         $builder
             ->add('title')
-            // ->add('author')
-            ->add('author', EntityType::class, array(
-                 'class' => Author::class,
-                'label' => 'book.label.author',
-                'mapped' => false,
-                 'required'=> true
-                ))
-            ->add('readers')
+            ->add('author')
+            // ->add('author', EntityType::class, array(
+            //      'class' => Author::class,
+            //     'label' => 'book.label.author',
+            //     'mapped' => false,
+            //      'required'=> true
+            //     ))
+            // ->add('readers')
         ;
     }
 
