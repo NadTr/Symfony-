@@ -8,17 +8,23 @@
     <table class="table is-striped">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ author.id }}</td>
-            </tr>
-            <tr>
                 <th>Name</th>
                 <td>{{ author.name }}</td>
+            </tr>
+            <tr>
+                <th>Livres</th>
+                <td>
+                  <ul>
+                    {% for book in author.books %}
+                      <li>{{book.title}}</li>
+                    {% endfor %}
+                  </ul>
+                </td>
             </tr>
         </tbody>
     </table>
 
-    <a class="btn button is-info" href="{{ path('author.index') }}">back to list</a>
+    <a class="btn button is-link"  href="{{ path('author.index') }}">back to list</a>
 
     <a class="btn button is-dark" href="{{ path('author.edit', {'id': author.id}) }}">edit</a>
 
